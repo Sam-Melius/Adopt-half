@@ -1,13 +1,19 @@
 // IMPORT MODULES under test here:
 // import { example } from '../example.js';
-import { renderDogCard, renderDogDetail } from '../render-utils.js';
+import { renderDogCard, } from '../render-utils.js';
 
 const test = QUnit.test;
 
-test('time to test a function', (expect) => {
+test('renderDog should take in a dog and return the correct DOM element. ', (expect) => {
     //Arrange
     // Set up your arguments and expectations
-    const expected = renderDogCard(dog);
+    const dog = {
+        id: 3,
+        name: 'fluffy',
+        breed: 'red heeler'
+    };
+    
+    const expected = `<a href="./detail/?id=3"><div class="dog-card"><p>fluffy</p><img src="./assets/red heeler.jpeg"></div></a>`;
     
     //Act 
     // Call the function you're testing and set the result to a const
@@ -15,5 +21,5 @@ test('time to test a function', (expect) => {
 
     //Expect
     // Make assertions about what is expected versus the actual result
-    expect.equal(actual, expected, 'renderDogCard(dog)');
+    expect.equal(actual.outerHTML, expected,);
 });
